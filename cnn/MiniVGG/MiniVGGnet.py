@@ -6,11 +6,11 @@ from keras import backend as K
 
 class MINIVGGNET:
 	@staticmethod
-	def build(self, height, weight, depth, classes):
-		Input_shape = (height,weight,depth)
+	def build(self, height, width, depth, classes):
+		Input_shape = (height,width,depth)
 		chanDim = -1
 		if K.image_data_format == "channel-first":
-			Input_shape = (depth,height,weight)
+			Input_shape = (depth,height,width)
 			chanDim = 1
 		model = Sequential()
 
