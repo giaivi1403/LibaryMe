@@ -6,7 +6,7 @@ from keras import backend as K
 
 class MINIVGGNET:
 	@staticmethod
-	def build(self, height, width, depth, classes):
+	def build(height, width, depth, classes):
 		Input_shape = (height,width,depth)
 		chanDim = -1
 		if K.image_data_format == "channel-first":
