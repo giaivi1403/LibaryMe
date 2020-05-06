@@ -5,7 +5,7 @@ import keras.backend as K
 class LENET_5:
 	@staticmethod
 
-	def build(height, width , depth, classes = 1):
+	def build(height, width , depth, classes):
 		Inputshape = (height, width, depth)
 		chanDim = -1
 		if K.image_data_format == "channel-first":
@@ -44,8 +44,8 @@ class LENET_5:
 		model.add(Dropout(0.5))
 
 		#output layer
-		model.add(Dense(1))
-		model.add(Activation("sigmoid"))
+		model.add(Dense(classes))
+		model.add(Activation("softmax"))
 
 		return model
 
