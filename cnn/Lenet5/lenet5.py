@@ -8,9 +8,9 @@ class LENET_5:
 	def build(height, width , depth, classes):
 		Inputshape = (height, width, depth)
 		chanDim = -1
-		if K.image_data_format == "channel-first":
-			Inputshape = (depth, height, width)
-			chanDim = 1
+		# if K.image_data_format == "channel-first":
+		# 	Inputshape = (depth, height, width)
+		# 	chanDim = 1
 		model = Sequential()
 		
 		#first layer
