@@ -7,14 +7,14 @@ class LENET_5:
 
 	def build(height, width , depth, classes):
 		Inputshape = (height, width, depth)
-		chanDim = -1
-		# if K.image_data_format == "channel-first":
-		# 	Inputshape = (depth, height, width)
-		# 	chanDim = 1
+			chanDim = -1
+		if K.image_data_format == "channel-first":
+			Inputshape = (depth, height, width)
+			chanDim = 1
 		model = Sequential()
 		
 		#first layer
-		model.add(Conv2D(1, (1,1), strides = (2,2), input_shape = Inputshape))
+		model.add(Conv2D(1, (1,1), strides = (2,2), input_shape = Inputshape, padding = "same"))
 		model.add(Conv2D(6, (5,5)))
 		model.add(Activation("relu"))
 		model.add(BatchNormalization(axis = chanDim))
@@ -23,7 +23,7 @@ class LENET_5:
 		model.add(AveragePooling2D(pool_size = (2,2)))
 		
 		#third layer
-		model.add(Conv2D(16, (5,5)))
+		model.add(Conv2D(16, (5,5), padding = "same"))
 		model.add(Activation("relu"))
 		model.add(BatchNormalization(axis = chanDim))
 		
